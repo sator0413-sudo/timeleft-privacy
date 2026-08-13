@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Left サポート</title>
+<style>
+  :root {
+    --paper:#fbfafc; --card:#f1f0f6; --ink:#17161d; --sub:#56545f; --rule:#dedce8;
+    --accent:#5e6ad2; --accent-ink:#4a54b2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper:#121118; --card:#1b1a23; --ink:#f2f1f6; --sub:#a6a3b2; --rule:#2e2c3a;
+            --accent:#9aa2f0; --accent-ink:#b4baf7; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN",system-ui,-apple-system,sans-serif;
+    line-height:1.9; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  main { max-width:720px; margin:0 auto; padding:64px 24px 96px; }
+  h1 { font-size:1.75rem; letter-spacing:-.02em; margin:0 0 8px; }
+  .tagline { color:var(--sub); margin:0 0 40px; }
+  h2 { font-size:1.25rem; margin:48px 0 16px; letter-spacing:-.015em; }
+  h3 { font-size:1.02rem; margin:0 0 6px; letter-spacing:-.01em; }
+  p { margin:0 0 1em; }
+  ol, ul { margin:0 0 1em; padding-left:1.4em; }
+  li { margin-bottom:.4em; }
+  a { color:var(--accent-ink); }
+  @media (prefers-color-scheme: dark) { a { color:var(--accent-ink); } }
+
+  .faq { background:var(--card); border-radius:14px; padding:22px 24px; margin-bottom:14px; }
+  .faq p:last-child, .faq ol:last-child, .faq ul:last-child { margin-bottom:0; }
+  .cause { font-size:.9rem; color:var(--sub); margin:0 0 10px; }
+
+  ul.contact { list-style:none; padding:0; margin:0; }
+  ul.contact li {
+    display:flex; align-items:baseline; gap:14px;
+    padding:14px 18px; border:1px solid var(--rule); border-radius:12px; margin-bottom:8px;
+  }
+  ul.contact strong { font-size:.8125rem; color:var(--sub); font-weight:600; min-width:6.5em; }
+
+  footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--rule); color:var(--sub); font-size:.875rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Time Left サポート</h1>
+  <p class="tagline">見すぎたいアプリを開くと、勝手に時間が動き出すアプリです。</p>
+
+  <h2>使い始めるには</h2>
+  <p>Time Left は、iPhone に最初から入っている「ショートカット」App と連携して動きます。iPhone は「いまどのアプリを開いたか」を他のアプリに教えない仕組みになっているため、ショートカットに知らせてもらう必要があるからです。</p>
+  <p>設定はアプリ内の手順に沿って一度だけ行えば、あとは何も操作する必要はありません。手順はアプリ右上の「?」からいつでも開けます。</p>
+
+  <h2>よくある質問</h2>
+
+  <div class="faq">
+    <h3>アプリを開いても自動で計測が始まらない</h3>
+    <p class="cause">オートメーションが「確認してから実行」になっていることがほとんどです。</p>
+    <ol>
+      <li>ショートカット App →「オートメーション」タブ</li>
+      <li>作ったオートメーションを開く</li>
+      <li><strong>「すぐに実行」</strong>が選ばれているか確認する</li>
+      <li>「実行時に通知」もオフにしておくとバナーが出ません</li>
+    </ol>
+    <p>それでも始まらない場合は、オートメーションが「オートメーション」タブに作られているか確認してください。「ショートカット」タブに作ったものはきっかけを持たないため、自動では動きません。</p>
+  </div>
+
+  <div class="faq">
+    <h3>アプリを閉じてもタイマーが止まらない</h3>
+    <p class="cause">「閉じたとき」のオートメーションが必要です。開いたとき用だけでは止まりません。</p>
+    <ol>
+      <li>ショートカット App →「オートメーション」タブ → ＋ → App</li>
+      <li>同じアプリを選び、<strong>「閉じている」</strong>にチェック（「開いている」のチェックは外す）</li>
+      <li>「すぐに実行」を選ぶ</li>
+      <li>アクションに<strong>「計測を終了（全アプリ共通）」</strong>を追加</li>
+    </ol>
+    <p>「計測を終了」は全アプリ共通です。どのアプリの「閉じたとき」からでも、これ 1 つで構いません。</p>
+    <p>いま動いている計測は、Time Left を開いて画面上部に出る「終了」を押せばいつでも止められます。Dynamic Island の「終了」からも止められます。</p>
+  </div>
+
+  <div class="faq">
+    <h3>違うアプリの名前でカウントダウンが始まる</h3>
+    <p class="cause">オートメーションで「計測対象」が指定されていません。</p>
+    <p>いちばん簡単なのは、対象が最初から埋め込まれた専用アクションを使うことです。ショートカットのアクション検索で「Time Left」と入れると出てきます。</p>
+    <ul>
+      <li>「Instagram の計測を開始」</li>
+      <li>「TikTok の計測を開始」</li>
+      <li>「すべてまとめて計測を開始」など</li>
+    </ul>
+    <p>「計測を開始」という汎用のアクションを使う場合は、その中の「計測対象」を必ず選んでください。</p>
+  </div>
+
+  <div class="faq">
+    <h3>アプリを開くと「どれにしますか」と選択を求められる</h3>
+    <p class="cause">「計測を開始」の計測対象が未設定のときに、ショートカットが聞いてきます。</p>
+    <p>上と同じ対処です。専用アクション（「Instagram の計測を開始」など）に差し替えるか、計測対象を選んでください。差し替えれば何も聞かれなくなります。</p>
+  </div>
+
+  <div class="faq">
+    <h3>Dynamic Island に表示されない</h3>
+    <ul>
+      <li>iPhone の「設定」→「Time Left」→ <strong>ライブアクティビティ</strong> がオンになっているか確認してください</li>
+      <li>Dynamic Island 非搭載の iPhone では、ロック画面に表示されます</li>
+      <li>Time Left 自体を開いている間は表示されません（他のアプリを使っている間に表示される仕組みです）</li>
+    </ul>
+  </div>
+
+  <div class="faq">
+    <h3>0 分になっても止まらない</h3>
+    <p>仕様です。Time Left はアプリをブロックしたり強制終了したりしません。0 分になると、数字が「あと」から「使用」に切り替わり、超過した時間が増えていきます。どうするかは利用者が決めるという考え方で作られています。</p>
+  </div>
+
+  <div class="faq">
+    <h3>1日の残りはいつ戻りますか</h3>
+    <p>「1日ごと」を選んでいる場合、残りは深夜 0:00 にリセットされます。「1回ごと」を選んでいる場合は、アプリを開くたびにリセットされます。</p>
+  </div>
+
+  <div class="faq">
+    <h3>計測を一時的に止めたい</h3>
+    <p>オートメーションを消す必要はありません。Time Left の各対象のスイッチをオフにすると、その対象は計測されなくなります。あとでオンに戻せます。</p>
+  </div>
+
+  <div class="faq">
+    <h3>たまに計測されない回がある</h3>
+    <p>iOS のオートメーションは、まれに発火しないことがあります。その回は計測されませんが、次にアプリを開いたときに自動で立て直します。合計が大きくずれ続けることはありません。</p>
+  </div>
+
+  <h2>動作環境</h2>
+  <ul>
+    <li>iOS 18 以降</li>
+    <li>Dynamic Island 搭載の iPhone を推奨（非搭載機ではロック画面に表示されます）</li>
+    <li>ショートカット App（iPhone に標準で入っています）</li>
+  </ul>
+
+  <h2>お問い合わせ</h2>
+  <p>解決しない場合や、ご要望・不具合の報告は以下までお願いします。X の DM がいちばん早く届きます。</p>
+  <ul class="contact">
+    <li><strong>X（DM）</strong><a href="https://x.com/sugar4marketing" target="_blank" rel="noopener">@sugar4marketing</a></li>
+    <li><strong>メール</strong><a href="mailto:sator0413@gmail.com">sator0413@gmail.com</a></li>
+  </ul>
+
+  <footer>
+    Time Left ・ <a href="./">プライバシーポリシー</a>
+  </footer>
+</main>
+</body>
+</html>
